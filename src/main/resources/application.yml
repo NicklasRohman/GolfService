@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:8081/golfprogram
+    url: jdbc:mysql://127.0.0.1:8080/golfprogram
     username: root
     password:
   banner:
@@ -9,9 +9,6 @@ spring:
   liquibase:
     change-log: sql/changelog.xml
     enabled: true
-    url: jdbc:mysql://localhost:8081/golfprogram
-    user: root
-    password:
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
