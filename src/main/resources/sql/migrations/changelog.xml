@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- IMPORTANT
+     To make the gradle task and java integration of liquibase work together,
+     the following settings must always exists:
+
+     1. In every include, set the attribute relativeToChangelogFile="true"
+     2. In every included file, set a logical filename, eg in sql, make sure that
+        every changeset looks like this:
+        -changeset nicklas.rohman:1 logicalFilePath:DEV-18988-game-setup-schema.sql
+        (the prefix should be a double dash but is not permitted in xml. See the sql files
+            for example)
+     -->
+
+    <include relativeToChangelogFile="true" file="00_golf_structure.sql" />
+</databaseChangeLog>
