@@ -1,4 +1,4 @@
-package com.golfservice.golfservice.contoller;
+package com.golfservice.golfservice.controller;
 
 import com.golfservice.golfservice.service.interfaces.RoundServiceInterface;
 import org.springframework.stereotype.Controller;
