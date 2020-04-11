@@ -13,8 +13,8 @@ public class PlayerService implements InterfacePlayerService {
     List<PlayerDTO> listOfPlayers = new ArrayList<>();
 
     public PlayerService() {
-        listOfPlayers.add(new PlayerDTO(1,"Nicklas Rohman"));
-        listOfPlayers.add(new PlayerDTO(2,"Jan Rohman"));
+        listOfPlayers.add(new PlayerDTO(1, "Nicklas Rohman"));
+        listOfPlayers.add(new PlayerDTO(2, "Jan Rohman"));
     }
 
 
