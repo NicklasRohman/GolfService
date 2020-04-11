@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface CourseServiceInterface {
 
-    public List<CourseDTO> getAllCourses();
+    List<CourseDTO> getAllCourses();
 
-    public CourseDTO getCoursesById(int courseId);
+    CourseDTO getCoursesById(int courseId);
 
 }
