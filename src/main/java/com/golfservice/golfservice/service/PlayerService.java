@@ -2,138 +2,57 @@ package com.golfservice.golfservice.service;
 
 import com.golfservice.golfservice.dto.PlayerDTO;
 import com.golfservice.golfservice.service.interfaces.InterfacePlayerService;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PlayerService implements InterfacePlayerService {
 
+    List<PlayerDTO> listOfPlayers = new ArrayList<>();
 
+    public PlayerService() {
+        listOfPlayers.add(new PlayerDTO(1,"Nicklas Rohman"));
+        listOfPlayers.add(new PlayerDTO(2,"Jan Rohman"));
+    }
 
 
     @Override
-    public List<PlayerDTO> findAll() {
+    public List<PlayerDTO> getAllPlayers() {
+        return listOfPlayers;
+    }
+
+    @Override
+    public PlayerDTO getPlayer(int playerId) {
+
+        for (PlayerDTO pl : listOfPlayers) {
+            if (pl.getPlayerId() == playerId) {
+                return pl;
+            }
+        }
+
         return null;
     }
 
     @Override
-    public List<PlayerDTO> findAll(Sort sort) {
-        return null;
+    public void addPlayer(PlayerDTO player) {
+        listOfPlayers.add(player);
     }
 
     @Override
-    public Page<PlayerDTO> findAll(Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public List<PlayerDTO> findAllById(Iterable<Integer> integers) {
-        return null;
-    }
-
-    @Override
-    public long count() {
-        return 0;
-    }
-
-    @Override
-    public void deleteById(Integer integer) {
+    public void updatePlayer(PlayerDTO player) {
+        for (PlayerDTO pl : listOfPlayers) {
+            if (pl.getPlayerId() == player.getPlayerId()) {
+                pl.setPlayerName(player.getPlayerName());
+            }
+        }
 
     }
 
     @Override
-    public void delete(PlayerDTO entity) {
-
+    public void deletePlayer(int playerId) {
+        listOfPlayers.removeIf(co -> co.getPlayerId() == playerId);
     }
 
-    @Override
-    public void deleteAll(Iterable<? extends PlayerDTO> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public <S extends PlayerDTO> S save(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends PlayerDTO> List<S> saveAll(Iterable<S> entities) {
-        return null;
-    }
-
-    @Override
-    public Optional<PlayerDTO> findById(Integer integer) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Integer integer) {
-        return false;
-    }
-
-    @Override
-    public void flush() {
-
-    }
-
-    @Override
-    public <S extends PlayerDTO> S saveAndFlush(S entity) {
-        return null;
-    }
-
-    @Override
-    public void deleteInBatch(Iterable<PlayerDTO> entities) {
-
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-
-    }
-
-    @Override
-    public PlayerDTO getOne(Integer integer) {
-        return null;
-    }
-
-    @Override
-    public <S extends PlayerDTO> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
-    }
-
-    @Override
-    public <S extends PlayerDTO> List<S> findAll(Example<S> example) {
-        return null;
-    }
-
-    @Override
-    public <S extends PlayerDTO> List<S> findAll(Example<S> example, Sort sort) {
-        return null;
-    }
-
-    @Override
-    public <S extends PlayerDTO> Page<S> findAll(Example<S> example, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public <S extends PlayerDTO> long count(Example<S> example) {
-        return 0;
-    }
-
-    @Override
-    public <S extends PlayerDTO> boolean exists(Example<S> example) {
-        return false;
-    }
 }
