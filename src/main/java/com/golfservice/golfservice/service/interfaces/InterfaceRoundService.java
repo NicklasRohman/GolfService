@@ -1,4 +1,4 @@
 package com.golfservice.golfservice.service.interfaces;
 
-public interface RoundServiceInterface {
+public interface InterfaceRoundService {
 }
