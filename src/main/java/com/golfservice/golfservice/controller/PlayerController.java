@@ -1,7 +1,7 @@
 package com.golfservice.golfservice.controller;
 
 import com.golfservice.golfservice.controller.interfaces.InterfacePlayerController;
-import com.golfservice.golfservice.dto.PlayerDTO;
+import com.golfservice.golfservice.entity.PlayerEntity;
 import com.golfservice.golfservice.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,12 +18,12 @@ public class PlayerController implements InterfacePlayerController {
     private PlayerService playerService;
 
     @RequestMapping("/getAllPlayers")
-    public List<PlayerDTO> getPlayers() {
+    public List<PlayerEntity> getPlayers() {
         return playerService.getAllPlayers();
     }
 
     @RequestMapping({"/{playerId}"})
-    public PlayerDTO getPlayer(@PathVariable("playerId") int playerId) {
+    public PlayerEntity getPlayer(@PathVariable("playerId") int playerId) {
         return playerService.getPlayer(playerId);
     }
 

@@ -1,18 +1,18 @@
 package com.golfservice.golfservice.service.interfaces;
 
-import com.golfservice.golfservice.dto.CourseDTO;
+import com.golfservice.golfservice.entity.CourseEntity;
 
 import java.util.List;
 
 public interface InterfaceCourseService {
 
-    List<CourseDTO> getAllCourses();
+    List<CourseEntity> getAllCourses();
 
-    CourseDTO getCourse(int courseId);
+    CourseEntity getCourse(int courseId);
 
-    void addCourse(CourseDTO course);
+    void addCourse(CourseEntity course);
 
-    void updateCourse(CourseDTO course);
+    void updateCourse(CourseEntity course);
 
     void deleteCourse(int courseId);
 

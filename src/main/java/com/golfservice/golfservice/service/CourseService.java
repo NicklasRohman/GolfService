@@ -1,6 +1,6 @@
 package com.golfservice.golfservice.service;
 
-import com.golfservice.golfservice.dto.CourseDTO;
+import com.golfservice.golfservice.entity.CourseEntity;
 import com.golfservice.golfservice.service.interfaces.InterfaceCourseService;
 import org.springframework.stereotype.Service;
 
@@ -10,22 +10,22 @@ import java.util.List;
 @Service
 public class CourseService implements InterfaceCourseService {
 
-    List<CourseDTO> listOfCourses = new ArrayList<>();
+    List<CourseEntity> listOfCourses = new ArrayList<>();
 
     public CourseService() {
-        listOfCourses.add(new CourseDTO("Läckö GK", 1));
-        listOfCourses.add(new CourseDTO("Lidköpings GK", 2));
+        listOfCourses.add(new CourseEntity("Läckö GK", 1));
+        listOfCourses.add(new CourseEntity("Lidköpings GK", 2));
     }
 
     @Override
-    public List<CourseDTO> getAllCourses() {
+    public List<CourseEntity> getAllCourses() {
         return listOfCourses;
     }
 
     @Override
-    public CourseDTO getCourse(int courseId) {
+    public CourseEntity getCourse(int courseId) {
 
-        for (CourseDTO co : listOfCourses) {
+        for (CourseEntity co : listOfCourses) {
             if (co.getCourseId() == courseId) {
                 return co;
             }
@@ -35,13 +35,13 @@ public class CourseService implements InterfaceCourseService {
     }
 
     @Override
-    public void addCourse(CourseDTO course) {
+    public void addCourse(CourseEntity course) {
         listOfCourses.add(course);
     }
 
     @Override
-    public void updateCourse(CourseDTO course) {
-        for (CourseDTO co : listOfCourses) {
+    public void updateCourse(CourseEntity course) {
+        for (CourseEntity co : listOfCourses) {
             if (co.getCourseId() == course.getCourseId()) {
                 co.setCourseName(course.getCourseName());
             }

@@ -1,6 +1,6 @@
 package com.golfservice.golfservice.service;
 
-import com.golfservice.golfservice.dto.RoundDTO;
+import com.golfservice.golfservice.entity.RoundEntity;
 import com.golfservice.golfservice.service.interfaces.InterfaceRoundService;
 import org.springframework.stereotype.Service;
 
@@ -10,21 +10,21 @@ import java.util.List;
 @Service
 public class RoundService implements InterfaceRoundService {
 
-    List<RoundDTO> listOfRounds = new ArrayList<>();
+    List<RoundEntity> listOfRounds = new ArrayList<>();
 
     public RoundService() {
-        listOfRounds.add(new RoundDTO(1, 1, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3));
-        listOfRounds.add(new RoundDTO(2, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3));
-        listOfRounds.add(new RoundDTO(3, 2, 3, 4, 3, 3, 3, 3, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3));
-        listOfRounds.add(new RoundDTO(4, 2, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 3, 3));
+        listOfRounds.add(new RoundEntity(1, 1, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3));
+        listOfRounds.add(new RoundEntity(2, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3));
+        listOfRounds.add(new RoundEntity(3, 2, 3, 4, 3, 3, 3, 3, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3));
+        listOfRounds.add(new RoundEntity(4, 2, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3, 3, 3, 3));
     }
 
     @Override
-    public List<RoundDTO> getAllRoundsForPlayer(int playerId) {
+    public List<RoundEntity> getAllRoundsForPlayer(int playerId) {
 
-        List<RoundDTO> result = new ArrayList<>();
+        List<RoundEntity> result = new ArrayList<>();
 
-        for (RoundDTO ro : listOfRounds) {
+        for (RoundEntity ro : listOfRounds) {
             if (ro.getPlayerId() == playerId) {
                 result.add(ro);
             }
@@ -34,9 +34,9 @@ public class RoundService implements InterfaceRoundService {
     }
 
     @Override
-    public RoundDTO getRound(int roundId) {
+    public RoundEntity getRound(int roundId) {
 
-        for (RoundDTO ro : listOfRounds) {
+        for (RoundEntity ro : listOfRounds) {
             if (ro.getRoundId() == roundId) {
                 return ro;
             }
@@ -46,13 +46,13 @@ public class RoundService implements InterfaceRoundService {
     }
 
     @Override
-    public void addRound(RoundDTO round) {
+    public void addRound(RoundEntity round) {
         listOfRounds.add(round);
     }
 
     @Override
-    public void updateRound(RoundDTO round) {
-        for (RoundDTO ro : listOfRounds
+    public void updateRound(RoundEntity round) {
+        for (RoundEntity ro : listOfRounds
         ) {
             if (ro.getRoundId() == round.getRoundId()) {
                 ro.setPlayerId(round.getPlayerId());

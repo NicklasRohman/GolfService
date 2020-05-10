@@ -1,18 +1,18 @@
 package com.golfservice.golfservice.service.interfaces;
 
-import com.golfservice.golfservice.dto.RoundDTO;
+import com.golfservice.golfservice.entity.RoundEntity;
 
 import java.util.List;
 
 public interface InterfaceRoundService {
 
-    List<RoundDTO> getAllRoundsForPlayer(int playerId);
+    List<RoundEntity> getAllRoundsForPlayer(int playerId);
 
-    RoundDTO getRound(int roundId);
+    RoundEntity getRound(int roundId);
 
-    void addRound(RoundDTO round);
+    void addRound(RoundEntity round);
 
-    void updateRound(RoundDTO round);
+    void updateRound(RoundEntity round);
 
     void deleteRound(int roundId);
 

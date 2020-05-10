@@ -1,21 +1,20 @@
-package com.golfservice.golfservice.dto;
+package com.golfservice.golfservice.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name = "round")
-public class RoundDTO {
+public class RoundEntity {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int roundId;
     private int playerId;
     private int hole1;
@@ -40,7 +39,7 @@ public class RoundDTO {
     private int totalScoreLast9;
     private int totalScore;
 
-    public RoundDTO(int roundId, int playerId, int hole1, int hole2, int hole3, int hole4, int hole5, int hole6, int hole7, int hole8, int hole9, int hole10, int hole11, int hole12, int hole13, int hole14, int hole15, int hole16, int hole17, int hole18) {
+    public RoundEntity(int roundId, int playerId, int hole1, int hole2, int hole3, int hole4, int hole5, int hole6, int hole7, int hole8, int hole9, int hole10, int hole11, int hole12, int hole13, int hole14, int hole15, int hole16, int hole17, int hole18) {
         this.roundId = roundId;
 
         this.playerId = playerId;

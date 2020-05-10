@@ -1,67 +1,37 @@
-package com.golfservice.golfservice.dto;
+package com.golfservice.golfservice.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-public class PlayerDTO {
+@Table(name = "player")
+public class PlayerEntity {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private int playerId;
     private String playerName;
     private double avgGreenHits;
     private double avgPutts;
 
-    public PlayerDTO(){}
-
-    public PlayerDTO(int playerId, String playerName) {
+    public PlayerEntity(int playerId, String playerName) {
         this.playerId = playerId;
         this.playerName = playerName;
-    }
-
-    public PlayerDTO(String playerName) {
-        this.playerName = playerName;
-    }
-
-    public int getPlayerId() {
-        return this.playerId;
-    }
-
-    public String getPlayerName() {
-        return this.playerName;
-    }
-
-    public double getAvgGreenHits() {
-        return this.avgGreenHits;
-    }
-
-    public double getAvgPutts() {
-        return this.avgPutts;
-    }
-
-    public void setPlayerId(final int playerId) {
-        this.playerId = playerId;
-    }
-
-    public void setPlayerName(final String playerName) {
-        this.playerName = playerName;
-    }
-
-    public void setAvgGreenHits(final double avgGreenHits) {
-        this.avgGreenHits = avgGreenHits;
-    }
-
-    public void setAvgPutts(final double avgPutts) {
-        this.avgPutts = avgPutts;
     }
 
     public boolean equals(final Object o) {
         if (o == this) {
             return true;
-        } else if (!(o instanceof PlayerDTO)) {
+        } else if (!(o instanceof PlayerEntity)) {
             return false;
         } else {
-            PlayerDTO other = (PlayerDTO) o;
+            PlayerEntity other = (PlayerEntity) o;
             if (!other.canEqual(this)) {
                 return false;
             } else if (this.getPlayerId() != other.getPlayerId()) {
@@ -92,7 +62,7 @@ public class PlayerDTO {
     }
 
     protected boolean canEqual(final Object other) {
-        return other instanceof PlayerDTO;
+        return other instanceof PlayerEntity;
     }
 
     public int hashCode() {

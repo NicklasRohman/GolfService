@@ -1,7 +1,8 @@
 package com.golfservice.golfservice.service;
 
-import com.golfservice.golfservice.dto.PlayerDTO;
+import com.golfservice.golfservice.entity.PlayerEntity;
 import com.golfservice.golfservice.service.interfaces.InterfacePlayerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,23 +11,24 @@ import java.util.List;
 @Service
 public class PlayerService implements InterfacePlayerService {
 
-    List<PlayerDTO> listOfPlayers = new ArrayList<>();
+
+    List<PlayerEntity> listOfPlayers = new ArrayList<>();
 
     public PlayerService() {
-        listOfPlayers.add(new PlayerDTO(1, "Nicklas Rohman"));
-        listOfPlayers.add(new PlayerDTO(2, "Jan Rohman"));
+        listOfPlayers.add(new PlayerEntity(1, "Nicklas Rohman"));
+        listOfPlayers.add(new PlayerEntity(2, "Jan Rohman"));
     }
 
 
     @Override
-    public List<PlayerDTO> getAllPlayers() {
+    public List<PlayerEntity> getAllPlayers() {
         return listOfPlayers;
     }
 
     @Override
-    public PlayerDTO getPlayer(int playerId) {
+    public PlayerEntity getPlayer(int playerId) {
 
-        for (PlayerDTO pl : listOfPlayers) {
+        for (PlayerEntity pl : listOfPlayers) {
             if (pl.getPlayerId() == playerId) {
                 return pl;
             }
@@ -36,13 +38,13 @@ public class PlayerService implements InterfacePlayerService {
     }
 
     @Override
-    public void addPlayer(PlayerDTO player) {
+    public void addPlayer(PlayerEntity player) {
         listOfPlayers.add(player);
     }
 
     @Override
-    public void updatePlayer(PlayerDTO player) {
-        for (PlayerDTO pl : listOfPlayers) {
+    public void updatePlayer(PlayerEntity player) {
+        for (PlayerEntity pl : listOfPlayers) {
             if (pl.getPlayerId() == player.getPlayerId()) {
                 pl.setPlayerName(player.getPlayerName());
             }

@@ -1,18 +1,18 @@
 package com.golfservice.golfservice.service.interfaces;
 
-import com.golfservice.golfservice.dto.PlayerDTO;
+import com.golfservice.golfservice.entity.PlayerEntity;
 
 import java.util.List;
 
 public interface InterfacePlayerService {
 
-    List<PlayerDTO> getAllPlayers();
+    List<PlayerEntity> getAllPlayers();
 
-    PlayerDTO getPlayer(int playerId);
+    PlayerEntity getPlayer(int playerId);
 
-    void addPlayer(PlayerDTO player);
+    void addPlayer(PlayerEntity player);
 
-    void updatePlayer(PlayerDTO player);
+    void updatePlayer(PlayerEntity player);
 
     void deletePlayer(int playerId);
 }
