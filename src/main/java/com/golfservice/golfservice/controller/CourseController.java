@@ -17,7 +17,7 @@ public class CourseController implements InterfaceCourseController {
     @Autowired
     private CourseService courseService;
 
-   @RequestMapping("/getAllCourses")
+    @RequestMapping("/getAllCourses")
     public List<CourseEntity> getCourse() {
         return courseService.getAllCourses();
     }

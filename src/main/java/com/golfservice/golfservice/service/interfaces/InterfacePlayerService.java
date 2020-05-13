@@ -5,7 +5,6 @@ import com.golfservice.golfservice.entity.PlayerEntity;
 import java.util.List;
 
 public interface InterfacePlayerService {
-
     List<PlayerEntity> getAllPlayers();
 
     PlayerEntity getPlayer(int playerId);

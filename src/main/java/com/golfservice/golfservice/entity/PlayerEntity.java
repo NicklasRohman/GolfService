@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class PlayerEntity {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int playerId;
     private String playerName;
     private double avgGreenHits;

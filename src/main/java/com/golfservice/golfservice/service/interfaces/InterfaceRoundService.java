@@ -15,5 +15,4 @@ public interface InterfaceRoundService {
     void updateRound(RoundEntity round);
 
     void deleteRound(int roundId);
-
 }

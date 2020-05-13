@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class RoundEntity {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int roundId;
     private int playerId;
     private int hole1;

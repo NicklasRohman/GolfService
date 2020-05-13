@@ -78,7 +78,7 @@ public class RoundService implements InterfaceRoundService {
                 ro.setTotalScoreFirst9(ro.getHole1() + ro.getHole2() + ro.getHole3() + ro.getHole4() + ro.getHole5() + ro.getHole6() + ro.getHole7() + ro.getHole8() + ro.getHole9());
                 ro.setTotalScoreLast9(ro.getHole10() + ro.getHole11() + ro.getHole12() + ro.getHole13() + ro.getHole14() + ro.getHole15() + ro.getHole16() + ro.getHole17() + ro.getHole18());
                 ro.setTotalScore(ro.getTotalScoreFirst9() + ro.getTotalScoreLast9());
-                
+
             }
 
         }

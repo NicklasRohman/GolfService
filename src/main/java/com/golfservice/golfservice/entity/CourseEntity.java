@@ -14,7 +14,7 @@ import javax.persistence.*;
 public class CourseEntity {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int courseId;
     private String courseName;
     private int hole1;

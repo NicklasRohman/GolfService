@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class GolfserviceApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(GolfserviceApplication.class, args);
     }
 
