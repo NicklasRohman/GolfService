@@ -1,6 +1,7 @@
 package com.golfservice.golfservice.service;
 
 import com.golfservice.golfservice.entity.PlayerEntity;
+import com.golfservice.golfservice.repository.PlayerRepository;
 import com.golfservice.golfservice.service.interfaces.InterfacePlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,8 @@ import java.util.List;
 @Service
 public class PlayerService implements InterfacePlayerService {
 
+    @Autowired
+    PlayerRepository playerRepository;
 
     List<PlayerEntity> listOfPlayers = new ArrayList<>();
 
@@ -19,10 +22,9 @@ public class PlayerService implements InterfacePlayerService {
         listOfPlayers.add(new PlayerEntity(2, "Jan Rohman"));
     }
 
-
     @Override
     public List<PlayerEntity> getAllPlayers() {
-        return listOfPlayers;
+        return playerRepository.findAll();
     }
 
     @Override
