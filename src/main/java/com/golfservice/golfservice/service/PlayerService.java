@@ -6,8 +6,8 @@ import com.golfservice.golfservice.service.interfaces.InterfacePlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PlayerService implements InterfacePlayerService {
@@ -15,48 +15,28 @@ public class PlayerService implements InterfacePlayerService {
     @Autowired
     PlayerRepository playerRepository;
 
-    List<PlayerEntity> listOfPlayers = new ArrayList<>();
-
-    public PlayerService() {
-        listOfPlayers.add(new PlayerEntity(1, "Nicklas Rohman"));
-        listOfPlayers.add(new PlayerEntity(2, "Jan Rohman"));
-    }
-
     @Override
     public List<PlayerEntity> getAllPlayers() {
         return playerRepository.findAll();
     }
 
     @Override
-    public PlayerEntity getPlayer(int playerId) {
-
-        for (PlayerEntity pl : listOfPlayers) {
-            if (pl.getPlayerId() == playerId) {
-                return pl;
-            }
-        }
-
-        return null;
+    public Optional<PlayerEntity> getPlayer(int playerId) {
+        return playerRepository.findById(playerId);
     }
 
     @Override
-    public void addPlayer(PlayerEntity player) {
-        listOfPlayers.add(player);
+    public void addPlayer(String player) {
+        playerRepository.save(new PlayerEntity(player));
     }
 
     @Override
-    public void updatePlayer(PlayerEntity player) {
-        for (PlayerEntity pl : listOfPlayers) {
-            if (pl.getPlayerId() == player.getPlayerId()) {
-                pl.setPlayerName(player.getPlayerName());
-            }
-        }
-
+    public PlayerEntity updatePlayer(PlayerEntity player) {
+        return playerRepository.save(player);
     }
 
     @Override
     public void deletePlayer(int playerId) {
-        listOfPlayers.removeIf(co -> co.getPlayerId() == playerId);
+        playerRepository.deleteById(playerId);
     }
-
 }
