@@ -4,9 +4,9 @@ import com.golfservice.golfservice.controller.interfaces.InterfaceRoundControlle
 import com.golfservice.golfservice.entity.RoundEntity;
 import com.golfservice.golfservice.service.RoundService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -17,14 +17,34 @@ public class RoundController implements InterfaceRoundController {
     @Autowired
     private RoundService roundService;
 
-    @RequestMapping("/{playerId}/getAllRounds")
+    @GetMapping("/{playerId}/getAllRounds")
     public List<RoundEntity> getRoundsForPlayer(@PathVariable("playerId") int playerId) {
         return roundService.getAllRoundsForPlayer(playerId);
     }
 
-    @RequestMapping("/{roundId}")
+    @GetMapping("/{roundId}")
     public RoundEntity getRound(@PathVariable("roundId") int roundId) {
         return roundService.getRound(roundId);
     }
 
+    @PostMapping("/{round}")
+    public ResponseEntity<HttpStatus> addRound(@RequestBody RoundEntity roundEntity) {
+        roundService.addRound(roundEntity);
+
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @PutMapping("/{round}")
+    public ResponseEntity<HttpStatus> updateRound(@RequestBody RoundEntity roundEntity) {
+        roundService.updateRound(roundEntity);
+
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @DeleteMapping("/deleteRound/{roundId}")
+    public ResponseEntity<HttpStatus> deleteRound(@PathVariable("roundId") int roundId) {
+        roundService.deleteRound(roundId);
+
+        return ResponseEntity.ok(HttpStatus.OK);
+    }
 }
