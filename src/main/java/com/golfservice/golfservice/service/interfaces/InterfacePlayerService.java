@@ -12,7 +12,7 @@ public interface InterfacePlayerService {
 
     void addPlayer(String player);
 
-    PlayerEntity updatePlayer(PlayerEntity player);
+    void updatePlayer(String player);
 
     void deletePlayer(int playerId);
 }
