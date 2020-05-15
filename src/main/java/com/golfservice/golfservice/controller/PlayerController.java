@@ -26,6 +26,11 @@ public class PlayerController implements InterfacePlayerController {
         return playerService.getPlayer(playerId);
     }
 
+    @PostMapping("/addPlayer")
+    public void addPlayer(@RequestParam String playerName){
+        playerService.addPlayer(playerName);
+    }
+
     @DeleteMapping("/deletePlayer/{playerId}")
     public void deletePlayer(@PathVariable("playerId") int playerId) {
         playerService.deletePlayer(playerId);

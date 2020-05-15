@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class PlayerEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int playerId;
 
     private String playerName;
@@ -20,11 +20,8 @@ public class PlayerEntity {
     public PlayerEntity() {
     }
 
-    public PlayerEntity(int playerId, String playerName) {
-        this.playerId = playerId;
+    public PlayerEntity(String playerName) {
         this.playerName = playerName;
     }
 
-    public PlayerEntity(String player) {
-    }
 }

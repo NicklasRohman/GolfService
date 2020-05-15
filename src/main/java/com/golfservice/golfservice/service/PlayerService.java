@@ -27,6 +27,7 @@ public class PlayerService implements InterfacePlayerService {
 
     @Override
     public void addPlayer(String player) {
+
         playerRepository.save(new PlayerEntity(player));
     }
 
