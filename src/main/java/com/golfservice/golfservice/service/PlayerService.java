@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 import static com.golfservice.golfservice.GolfserviceApplication.LOGGER;
 
@@ -35,13 +34,12 @@ public class PlayerService implements InterfacePlayerService {
     }
 
     @Override
-    public void updatePlayer(String player) {
-        List<PlayerEntity> playerEntities = playerRepository.findAll();
+    public void updatePlayer(int playerId, String playerName) {
 
-        for (PlayerEntity p : playerEntities) {
-            if (p.getPlayerName().equalsIgnoreCase(player)) {
-                playerRepository.save(p);
-            }
+        try {
+            playerRepository.updateUserSetStatusForNameNative(playerName, playerId);
+        } catch (Exception e) {
+            LOGGER.error("Error did not update player with the id {}, {}", playerId, e.getStackTrace());
         }
     }
 
@@ -50,7 +48,6 @@ public class PlayerService implements InterfacePlayerService {
         try {
             playerRepository.deleteById(playerId);
         } catch (Exception e) {
-            System.out.println("No player with id " + playerId);
             LOGGER.info("No player with id {}, {}", playerId, e.getStackTrace());
         }
 
