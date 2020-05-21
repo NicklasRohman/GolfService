@@ -27,7 +27,7 @@ public class RoundController implements InterfaceRoundController {
         return roundService.getRound(roundId);
     }
 
-    @PostMapping("/{round}")
+    @PostMapping("/addRound")
     public ResponseEntity<HttpStatus> addRound(@RequestBody RoundEntity roundEntity) {
         roundService.addRound(roundEntity);
 
