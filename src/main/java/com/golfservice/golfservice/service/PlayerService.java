@@ -4,6 +4,9 @@ import com.golfservice.golfservice.entity.PlayerEntity;
 import com.golfservice.golfservice.repository.PlayerRepository;
 import com.golfservice.golfservice.service.interfaces.InterfacePlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,14 +26,36 @@ public class PlayerService implements InterfacePlayerService {
     }
 
     @Override
-    public Optional<PlayerEntity> getPlayer(int playerId) {
-        return playerRepository.findById(playerId);
+    public ResponseEntity<PlayerEntity> getPlayer(int playerId) {
+
+
+        Optional<PlayerEntity> thePlayer = playerRepository.findById(playerId);
+
+        if (thePlayer.isPresent()) {
+            PlayerEntity player = new PlayerEntity();
+            player.setPlayerName(thePlayer.get().getPlayerName());
+            player.setAvgGreenHits(thePlayer.get().getAvgGreenHits());
+            player.setAvgPutts(thePlayer.get().getAvgPutts());
+            player.setPlayerId(thePlayer.get().getPlayerId());
+
+            return new ResponseEntity<>(player, new HttpHeaders(), HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
     }
 
     @Override
-    public void addPlayer(String player) {
+    public ResponseEntity<HttpStatus> addPlayer(String playerName) {
 
-        playerRepository.save(new PlayerEntity(player));
+        List<PlayerEntity> playerExist = getAllPlayers();
+
+        for (PlayerEntity p : playerExist) {
+            if (p.getPlayerName().equalsIgnoreCase(playerName)) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @Override

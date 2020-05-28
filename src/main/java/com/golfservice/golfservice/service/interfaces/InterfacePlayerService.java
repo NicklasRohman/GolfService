@@ -1,16 +1,17 @@
 package com.golfservice.golfservice.service.interfaces;
 
 import com.golfservice.golfservice.entity.PlayerEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface InterfacePlayerService {
     List<PlayerEntity> getAllPlayers();
 
-    Optional<PlayerEntity> getPlayer(int playerId);
+    ResponseEntity<PlayerEntity> getPlayer(int playerId);
 
-    void addPlayer(String player);
+    ResponseEntity<HttpStatus> addPlayer(String player);
 
     void updatePlayer(int playerId, String playerName);
 

@@ -8,9 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
 @RestController
 @RequestMapping({"/player"})
 public class PlayerController implements InterfacePlayerController {
@@ -24,20 +21,18 @@ public class PlayerController implements InterfacePlayerController {
     }
 
     @GetMapping({"/{playerId}"})
-    public Optional<PlayerEntity> getPlayer(@PathVariable("playerId") int playerId) {
+    public ResponseEntity<PlayerEntity> getPlayer(@PathVariable("playerId") int playerId) {
         return playerService.getPlayer(playerId);
     }
 
     @PostMapping("/addPlayer")
-    public ResponseEntity<HttpStatus> addPlayer(@RequestParam String playerName){
-        playerService.addPlayer(playerName);
-
-        return ResponseEntity.ok(HttpStatus.OK);
+    public ResponseEntity<HttpStatus> addPlayer(@RequestParam String playerName) {
+        return playerService.addPlayer(playerName);
     }
 
     @PutMapping("/updatePlayer")
     public ResponseEntity<HttpStatus> updatePlayer(@RequestParam("playerId") int playerId, @RequestParam("playerName") String playerName) {
-        playerService.updatePlayer(playerId,playerName);
+        playerService.updatePlayer(playerId, playerName);
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
