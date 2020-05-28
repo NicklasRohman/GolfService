@@ -28,7 +28,6 @@ public class PlayerService implements InterfacePlayerService {
     @Override
     public ResponseEntity<PlayerEntity> getPlayer(int playerId) {
 
-
         Optional<PlayerEntity> thePlayer = playerRepository.findById(playerId);
 
         if (thePlayer.isPresent()) {
@@ -39,8 +38,7 @@ public class PlayerService implements InterfacePlayerService {
             player.setPlayerId(thePlayer.get().getPlayerId());
 
             return new ResponseEntity<>(player, new HttpHeaders(), HttpStatus.OK);
-        }
-        else {
+        } else {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
